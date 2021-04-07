@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+//這是把cdn下載下來引入
+//@import "./assets/styles/bootstrap@4.min.css";
+
+//這是引入npm包
+@import "~bootstrap";
