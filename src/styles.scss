@@ -6,3 +6,7 @@
 
 //這是引入npm包
 @import "~bootstrap";
+
+.black-back{
+    background-color:rgba(0,0,0,.4);  //彈出視窗時.4是透明度
+}

@@ -2,6 +2,70 @@
   A simple primary alert—check it out!
 </div>
 
+<!-- 點擊按鈕彈出視窗 compoent showmodal預設false ,點擊觸發true-->
+<button (click) ="showModal = true"  class = "btn btn-info"> 顯示 </button>
+<!-- 一開始要傳進去的變數 -->
+<!-- show  控制彈出視窗
+close 控制 -->
+<app-dialog 
+[show] ="showModal" 
+[title] = "'一個標題'" 
+(close) ="onCloseget()"
+(BackDropClose) ="onBackDropClickget()"
+(confrim) = "onConfrimget()"
+></app-dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+  <h3>綁訂單個class.XXX</h3>
+  用屬性控制按鈕顏色 
+  <button type="button" class ="btn" [class.btn-primary]="undefined">按鈕undefined</button>
+  <button type="button" class ="btn" [class.btn-danger]="btnIsDisable">按鈕</button>
+  <button type="button" class ="btn" [class.btn-danger]="'dd'">按鈕dd</button>
+  <button type="button" class ="btn" [class.btn-danger]="0">按鈕0</button>
+  <button type="button" class ="btn" [class.btn-danger]="1">按鈕1</button>
+  <button type="button" class ="btn" [class.btn-danger]="null">按鈕null</button>
+  <button type="button" class ="btn" [class.btn-primary]="true">按鈕true</button>
+</section>
+  
+<section>
+  <h3>綁定多個class</h3>
+  <button type="button" [class] ="btnCls" >按鈕btnCls</button>
+  <button type="button" [class] ="btnCls2" >按鈕btnCls2</button>
+  <button type="button" [class] ="btnCls3" >按鈕btnCls3</button>
+</section>
+
+<section>
+  <h3>綁定單個sytle</h3>
+  <p [style.color]="'#f60'">綁訂單個style</p>
+  <p [style.border]="'1px solid'" [style.width] ="'80px'">綁訂單個style</p>
+  <p [style.border]="'1px solid'" [style.height.px] ="'100'">綁訂單個style</p>
+</section>
+
+<section>
+  <h3>綁定多個sytle</h3>
+  <p [style]="style1">綁訂多個style屬性 推</p>
+  <p [style]="style2">綁訂多個style數組 不推</p>
+  <p [style]="style3">綁訂多個style綁定 推</p>
+  <p [ngStyle]="style3">綁訂多個style ngstyle 不推薦使用</p>
+</section>
+
+
+
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
@@ -23,5 +87,38 @@
 <p>性別:{{ gender === 0 ? '男':'女'}}</p>
 
 <img src="../assets/img/w644.jpg" alt = 'img'>
-<!-- 綁定屬性一定要中括號不然顯示不出來 -->
+綁定屬性一定要中括號不然顯示不出來
 <img [src]="Pic" [alt] = 'dec'>  
+也可以用綁定的方式,大部分用上面的屬性
+<img src="{{ user2.Pic }}" alt = "{{ user2.dec }}">  
+雙引號裡+單引號是字串,可以串文字
+<img src="'Pic'+{{user2.Pic}}" alt = "'dec'+ user2.dec">  
+
+<br>
+<table class="table-bordered">
+  <tr>
+    <th>name</th>
+    <th>phone</th>
+    <th>age</th>
+  </tr>
+  <tr>
+    <!-- 橫跨欄位 -->
+    <td colspan =2>张三</td>
+    <td>13398490594</td>
+    <td>33</td>
+  </tr>
+  <tr>
+    <!-- 橫跨欄位綁定屬性 避免與內定字串衝突 S大寫 -->
+    <td [colSpan]="colSpan">李四</td>
+    <td>15079049984</td>
+    <td>22</td>
+  </tr>
+</table>
+
+<!-- 用屬性控制按鈕disable -->
+<button class="btn btn-primary" [disabled]='IsDisable'>click</button>
+
+<!-- 綁自訂義屬性要加attr. -->
+<p [attr.data-title]="cust">一段文字</p>
+<p title="cust1">一段11</p>
+<p [title]="cust2">一段22</p>
